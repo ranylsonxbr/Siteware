@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 
 @RestController
@@ -16,6 +17,10 @@ public interface ClienteAPI {
     @PostMapping(value = "/cria-cliente")
     @ResponseStatus(value = HttpStatus.CREATED)
     ClienteResponse postCliente(@RequestBody @Valid ClienteRequest ClienteRequest);
+
+    @GetMapping(value = "/{idCliente}")
+    @ResponseStatus(value = HttpStatus.OK)
+    ClienteDetalhadoResponse getBuscaClientePorId(@PathVariable(value = "idCliente") UUID idCliente);
 
     @GetMapping(value = "/busca-todos-clientes")
     @ResponseStatus(value = HttpStatus.OK)

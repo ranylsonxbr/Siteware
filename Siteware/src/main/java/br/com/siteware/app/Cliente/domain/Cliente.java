@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -21,7 +22,7 @@ public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idCliente", updatable = false, unique = true, nullable = false, length = 36)
+    @Column(columnDefinition = "BINARY(16)",name = "idCliente", updatable = false, unique = true, nullable = false, length = 36)
     private UUID idCliente;
     @NotBlank
     private String nomeCompleto;

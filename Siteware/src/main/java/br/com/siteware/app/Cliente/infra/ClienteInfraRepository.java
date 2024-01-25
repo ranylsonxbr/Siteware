@@ -5,8 +5,9 @@ import br.com.siteware.app.Cliente.repository.ClienteRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 @Log4j2
@@ -29,5 +30,13 @@ public class ClienteInfraRepository implements ClienteRepository {
         List<Cliente> todosClientes = clientSpringDataJPARepository.findAll();
         log.info("[finish] ClienteInfraRepository - buscaTodosClientes");
         return todosClientes;
+    }
+
+    @Override
+    public Optional<Cliente> buscaClientePorId(UUID idCliente) {
+        log.info("[inicia] ClienteInfraRepository - buscaTodasPessoas");
+        Optional<Cliente> cliente = clientSpringDataJPARepository.findById(idCliente);
+        log.info("[inicia] ClienteInfraRepository - buscaTodasPessoas");
+        return cliente;
     }
 }

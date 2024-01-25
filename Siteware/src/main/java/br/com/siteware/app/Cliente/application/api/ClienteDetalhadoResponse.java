@@ -11,10 +11,9 @@ public class ClienteDetalhadoResponse {
     private UUID idCliente;
     private String nomeCompleto;
     private String email;
-
     private LocalDate dataNascimento;
 
-    private ClienteDetalhadoResponse(Cliente cliente) {
+    public ClienteDetalhadoResponse(Cliente cliente) {
         this.idCliente = cliente.getIdCliente();
         this.nomeCompleto = cliente.getNomeCompleto();
         this.email = cliente.getEmail();

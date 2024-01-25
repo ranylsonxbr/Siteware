@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
+import java.util.UUID;
 
 
 @RestController
@@ -20,6 +21,15 @@ public class ClienteController implements ClienteAPI {
         ClienteResponse novoCliente = clienteService.salvaCliente(clienteRequest);
         log.info("[finish] ClienteController - postCliente");
         return novoCliente;
+    }
+
+    @Override
+    public ClienteDetalhadoResponse getBuscaClientePorId(UUID idCliente) {
+        log.info("[start] ClienteController - getBuscaClientePorId");
+        log.info("[idCliente] {}", idCliente);
+        ClienteDetalhadoResponse clienteDetalhado = clienteService.buscaClientePorId(idCliente);
+        log.info("[finish] ClienteController - getBuscaClientePorId");
+        return clienteDetalhado;
     }
 
     @Override
