@@ -1,0 +1,17 @@
+package br.com.siteware.app.Pedido.application.api;
+
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
+
+@RestController
+@RequestMapping("/pedido")
+public interface PedidoAPI {
+
+    @PostMapping
+    @ResponseStatus(value = HttpStatus.CREATED)
+    PedidoResponse postPedido(@RequestParam(value = "idCliente") UUID idCliente, @RequestBody @Valid PedidoRequest pedidoRequest);
+
+}
