@@ -10,7 +10,7 @@ import java.util.UUID;
 @RequestMapping("/pedido")
 public interface PedidoAPI {
 
-    @PostMapping
+    @PostMapping(value = "/cria-pedido")
     @ResponseStatus(value = HttpStatus.CREATED)
     PedidoResponse postPedido(@RequestParam(value = "idCliente") UUID idCliente, @RequestBody @Valid PedidoRequest pedidoRequest);
 

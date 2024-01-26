@@ -1,5 +1,6 @@
-package br.com.siteware.app.Pedido;
+package br.com.siteware.app.Pedido.domain;
 
+import br.com.siteware.app.Pedido.application.api.PedidoRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -17,15 +18,22 @@ import java.util.UUID;
 public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(columnDefinition = "uuid", name = "idPedido", updatable = false, unique = true, nullable = false)
+    @Column(columnDefinition = "BINARY(16)",name = "idPedido", updatable = false, unique = true, nullable = false)
     private UUID idPedido;
     @NotNull
-    @Column(columnDefinition = "uuid", name = "idCliente", nullable = false)
+    @Column(columnDefinition = "BINARY(16)",name = "idCliente", nullable = false)
     private UUID idCliente;
     @NotBlank
     @Size(message = "Campo descrição não pode estar vazio", max = 100, min = 5)
     private String descricao;
     private Double total = 0.0;
     private LocalDateTime DataHoraDoPedido;
+
+    public Pedido(UUID idCliente, PedidoRequest pedidoRequest) {
+        this.idCliente = idCliente;
+        this.descricao = pedidoRequest.getDescricao();
+        this.total = 0.0;
+        this.DataHoraDoPedido = LocalDateTime.now();
+    }
 
 }
