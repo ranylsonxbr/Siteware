@@ -27,13 +27,13 @@ public class Pedido {
     @Size(message = "Campo descrição não pode estar vazio", max = 100, min = 5)
     private String descricao;
     private Double total = 0.0;
-    private LocalDateTime DataHoraDoPedido;
+    private LocalDateTime dataHoraDoPedido;
 
     public Pedido(UUID idCliente, PedidoRequest pedidoRequest) {
         this.idCliente = idCliente;
         this.descricao = pedidoRequest.getDescricao();
         this.total = 0.0;
-        this.DataHoraDoPedido = LocalDateTime.now();
+        this.dataHoraDoPedido = LocalDateTime.now();
     }
 
 }
